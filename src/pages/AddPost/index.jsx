@@ -8,11 +8,19 @@ import 'easymde/dist/easymde.min.css';
 import styles from './AddPost.module.scss';
 import { useSelector } from 'react-redux';
 import { selectIsAuth } from '../../redux/slices/auth';
-import { useNavigate, Navigate, useParams } from 'react-router-dom';
+import { useNavigate, Navigate, useParams, useLocation } from 'react-router-dom';
 import axios from '../../axios';
 
 export const AddPost = () => {
   const { id } = useParams();
+
+  const location = useLocation();
+
+  const AddPost = React.useRef(false);
+  if (location.pathname === '/add-post') {
+    AddPost.current = true;
+  }
+
   const navigate = useNavigate();
   const isAuth = useSelector(selectIsAuth);
   // const imageUrl = '';
@@ -23,6 +31,16 @@ export const AddPost = () => {
   const [imageUrl, setImageUrl] = React.useState('');
   const inputFileRef = React.useRef();
   const isEditting = Boolean(id);
+
+  React.useEffect(() => {
+    if (AddPost.current) {
+      setText('');
+      setTitle('');
+      setTags('');
+      setImageUrl('');
+      AddPost.current = false;
+    }
+  }, [AddPost.current]);
 
   const handleChangeFile = async (event) => {
     try {
@@ -118,6 +136,7 @@ export const AddPost = () => {
           <img
             className={styles.image}
             src={`${process.env.REACT_APP_API_URL}${imageUrl}`}
+            // src={`http://localhost:4444${imageUrl}`}
             alt="Uploaded"
           />
         </>

@@ -5,6 +5,7 @@ import { Header } from './components';
 import { Home, FullPost, Registration, AddPost, Login, PostsByTag } from './pages';
 import React from 'react';
 import { fetchAuthMe } from './redux/slices/auth';
+import NotFoundPage from './pages/NotFoundPage';
 
 function App() {
   const dispatch = useDispatch();
@@ -26,6 +27,7 @@ function App() {
           <Route path="/add-post" element={<AddPost />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Registration />} />
+          <Route path="/*" element={<NotFoundPage />} />
         </Routes>
       </Container>
     </>
