@@ -44,7 +44,7 @@ export const Home = () => {
         <Tab label="Популярные" />
       </Tabs>
       <Grid container spacing={4}>
-        <Grid xs={8} item>
+        <Grid xs={12} sm={8} item>
           {(isPostsLoading ? [...Array(5)] : posts.items).map((obj, index) =>
             isPostsLoading ? (
               <Post key={index} isLoading={true} />
@@ -79,8 +79,12 @@ export const Home = () => {
           )}
         </Grid>
 
-        <Grid xs={4} item>
-          <TagsBlock items={tags.items} isLoading={isTagsLoading} />
+        <Grid xs={12} sm={4} item sx={{ paddingLeft: '5px !important' }}>
+          <TagsBlock
+            items={tags.items}
+            isLoading={isTagsLoading}
+            sx={{ fontSize: '8px !important' }}
+          />
           {!comments.items.length && !isCommentsLoading ? (
             <Typography>No comments</Typography>
           ) : (

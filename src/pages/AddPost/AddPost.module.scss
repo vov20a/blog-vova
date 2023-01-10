@@ -42,3 +42,11 @@
     margin-right: 15px;
   }
 }
+@media screen and (max-width: 500px) {
+  .title {
+    input {
+      font-size: 22px;
+      font-weight: 900;
+    }
+  }
+}

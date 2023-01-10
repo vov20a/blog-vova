@@ -35,3 +35,22 @@
     text-decoration: none;
   }
 }
+@media screen and (max-width: 450px) {
+  .inner .logo a {
+    display: block !important;
+    width: 100% !important;
+  }
+  .inner .buttons a button {
+    display: block !important;
+    width: 100% !important;
+  }
+  .inner .buttons a:first-of-type button {
+    margin-bottom: 10px;
+  }
+
+  // .buttons,
+  // button {
+  //   display: block;
+  //   width: 100%;
+  // }
+}

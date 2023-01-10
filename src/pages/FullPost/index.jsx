@@ -1,11 +1,13 @@
 import React from 'react';
 import { useParams, useLocation } from 'react-router-dom';
 
-import { Post } from '../components/Post';
-import { Index } from '../components/AddComment';
-import { CommentsBlock } from '../components/CommentsBlock';
-import axios from '../axios';
+import { Post } from '../../components/Post';
+import { Index } from '../../components/AddComment';
+import { CommentsBlock } from '../../components/CommentsBlock';
+import axios from '../../axios';
 import { ReactMarkdown } from 'react-markdown/lib/react-markdown';
+
+import styles from './FullPost.module.css';
 
 export const FullPost = () => {
   const location = useLocation();
@@ -71,7 +73,7 @@ export const FullPost = () => {
         tags={data.tags}
         isFullPost>
         {/* <p>{data.text}</p> */}
-        <ReactMarkdown children={data.text} />
+        <ReactMarkdown sx={{ fontSize: 8 }} children={data.text} />
       </Post>
       <CommentsBlock
         items={

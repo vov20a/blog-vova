@@ -1,6 +1,8 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import * as moment from 'moment';
+import { fetchRemoveComment } from '../redux/slices/posts';
 
 import { SideBlock } from './SideBlock';
 import ListItem from '@mui/material/ListItem';
@@ -13,8 +15,18 @@ import Skeleton from '@mui/material/Skeleton';
 import IconButton from '@mui/material/IconButton';
 import DeleteIcon from '@mui/icons-material/Clear';
 import { Typography } from '@mui/material';
-import * as moment from 'moment';
-import { fetchRemoveComment } from '../redux/slices/posts';
+// import { makeStyles } from '@mui/material/styles';
+
+// const useStyles = makeStyles((theme) => {
+// root: {
+//   fontSize: 32;
+// }
+// @media screen and (max-width:500px){
+//   root:{
+//     fontSize:12;
+//   }
+// }
+// });
 
 export const CommentsBlock = ({ items, children, isHome, isLoading = true }) => {
   const navigate = useNavigate();
@@ -55,7 +67,11 @@ export const CommentsBlock = ({ items, children, isHome, isLoading = true }) => 
                 </div>
               ) : (
                 <>
-                  <ListItemText primary={obj.user.fullName} secondary={obj.text} />
+                  <ListItemText
+                    // sx={{ fontSize: '8px !important' }}
+                    primary={obj.user.fullName}
+                    secondary={obj.text}
+                  />
                   {!isHome && (
                     <>
                       <Typography>{moment(obj.createdAt).format('MM/DD/YYYY')}</Typography>

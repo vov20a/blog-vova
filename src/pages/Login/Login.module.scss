@@ -14,3 +14,13 @@
   font-weight: bold !important;
   margin-bottom: 30px !important;
 }
+@media screen and (max-width: 500px) {
+  .root {
+    display: block;
+    width: 100%;
+  }
+  .title {
+    margin-bottom: 30px !important;
+    font-size: 20px !important;
+  }
+}
